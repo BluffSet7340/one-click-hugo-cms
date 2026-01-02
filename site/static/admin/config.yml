@@ -80,6 +80,38 @@ collections: # A list of collections the CMS should be able to edit
               - {label: Heading, name: heading, widget: string}
               - {label: Text, name: text, widget: text}
               - {label: Image, name: imageUrl, widget: image}
+  - name: "navbar"
+    label: "Navigation Bar"
+    files:
+      - file: "data/navbar.yml" # Or .json, .md depending on your static site generator
+        label: "Navigation Menu Items"
+        fields:
+          - label: "Navigation Links"
+            name: "links"
+            widget: "list" # Use the list widget for repeatable menu items
+            collapsed: false
+            summary: "{{label}}"
+            fields:
+              - label: "Label"
+                name: "label"
+                widget: "string"
+                hint: "The display text for the nav item."
+              - label: "URL"
+                name: "url"
+                widget: "string"
+                hint: "The link for the nav item (e.g., /about or https://external.com)."
+              - label: "Submenu Items"
+                name: "submenu"
+                widget: "list" # Nest another list widget for sub-items
+                collapsed: true
+                summary: "{{label}}"
+                fields:
+                  - label: "Submenu Label"
+                    name: "label"
+                    widget: "string"
+                  - label: "Submenu URL"
+                    name: "url"
+                    widget: "string"
   - name: "site_settings"
     label: "Site Settings"
     files:
